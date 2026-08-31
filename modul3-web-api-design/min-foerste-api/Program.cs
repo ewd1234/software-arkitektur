@@ -25,20 +25,31 @@ app.MapGet("/api/fruit/random", () => new {Message = frugterArr[Random.Shared.Ne
 
 app.MapPost("/api/fruit/list/", (Fruit fruit) =>
 {
+
+    if (string.IsNullOrEmpty(fruit.name))
+    {
+        return Results.BadRequest();
+    }
+
     frugterList.Add(fruit.name);
 
     Console.WriteLine($"Tilføjet frugt: {fruit.name}");
 
-    return frugterList;
+    return Results.Ok(frugterList);
 });
 
 app.MapPost("/api/fruit/arr/", (Fruit fruit) =>
 {
+    if (string.IsNullOrEmpty(fruit.name))
+    {
+        return Results.BadRequest();
+    }
+
     frugterArr = frugterArr.Append(fruit.name).ToArray();
 
     Console.WriteLine($"Tilføjet frugt: {fruit.name}");
 
-    return frugterArr;
+    return Results.Ok(frugterArr);
 });
 
 
