@@ -97,6 +97,20 @@ app.MapDelete("/api/tasks/{id}", (int id) =>
     return Results.Ok(todos);
 });
 
+app.MapPost("/api/tasks", (Todo task) =>
+{
+    if (string.IsNullOrEmpty(task.Title))
+    {
+        return Results.BadRequest("Ikke indsat rigtig task");
+    }
+
+    task = new Todo {Id = task.Id, IsDone = task.IsDone, Title = task.Title};
+
+    todos.Add(task);
+
+    return Results.Ok(todos);
+});
+
 app.Run();
 record Fruit(string name);
 
