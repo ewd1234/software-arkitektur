@@ -1,5 +1,19 @@
 var builder = WebApplication.CreateBuilder(args);
+// Åben op for "CORS" i din API.
+// Læs om baggrunden her: https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-10.0
+
+var AllowCors = "_AllowCors";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowCors, builder => {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+app.UseCors(AllowCors);
 
 List<string> frugterList = new List<string>
 {
@@ -13,9 +27,9 @@ String[] frugterArr = new String[]
 
 List<Todo> todos = new List<Todo>
 {
-    new Todo {Id = 1, IsDone = false, Title = "Opvask"},
-    new Todo {Id = 2, IsDone = false, Title = "Støvesuge"},
-    new Todo {Id = 3, IsDone = false, Title = "Lave mad"}
+    new Todo {Id = 1, Done = false, Title = "Opvask"},
+    new Todo {Id = 2, Done = false, Title = "Støvesuge"},
+    new Todo {Id = 3, Done = false, Title = "Lave mad"}
 };
 
 //Hello
@@ -62,7 +76,7 @@ app.MapPost("/api/fruit/arr/", (Fruit fruit) =>
 });
 
 //Todo Tasks
-app.MapGet("/api/tasks", () => new {Message = todos});
+app.MapGet("/api/tasks", () => todos);
 
 app.MapGet("/api/tasks/{id}", (int id) =>
 {
@@ -73,13 +87,14 @@ app.MapGet("/api/tasks/{id}", (int id) =>
 
 app.MapPut("/api/tasks/{id}", (int id, Todo updatedTask) =>
 {
-    if (id < 0 || id >= todos.Count())
+    Todo? todo = todos.FirstOrDefault(t => t.Id == id);
+
+    if (todo == null)
     {
-        return Results.BadRequest($"Kan ikke finde id: {id}");
+        return Results.NotFound();
     }
 
-    updatedTask = todos[id - 1];
-    updatedTask.IsDone = !updatedTask.IsDone;
+    todo.Done = !todo.Done;
     
     return Results.Ok(todos);
 
@@ -87,12 +102,14 @@ app.MapPut("/api/tasks/{id}", (int id, Todo updatedTask) =>
 
 app.MapDelete("/api/tasks/{id}", (int id) =>
 {
-    if (id <= 0 || id >= todos.Count())
+    Todo? todo = todos.FirstOrDefault(t => t.Id == id);
+
+    if (todo == null)
     {
-        return Results.BadRequest($"Kan ikke finde id: {id}");
+        return Results.NotFound();
     }
 
-    todos.Remove(todos[id - 1]);
+    todos.Remove(todo);
 
     return Results.Ok(todos);
 });
@@ -104,7 +121,11 @@ app.MapPost("/api/tasks", (Todo task) =>
         return Results.BadRequest("Ikke indsat rigtig task");
     }
 
-    task = new Todo {Id = task.Id, IsDone = task.IsDone, Title = task.Title};
+    task = new Todo {
+        Id = Random.Shared.Next(), 
+        Done = false, 
+        Title = task.Title
+        };
 
     todos.Add(task);
 
@@ -118,5 +139,5 @@ public class Todo
 {
     public int Id { get; set; }
     public string? Title { get; set; }
-    public bool IsDone { get; set; }
+    public bool Done { get; set; } = false;
 }
