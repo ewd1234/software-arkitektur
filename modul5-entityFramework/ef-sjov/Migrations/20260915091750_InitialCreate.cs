@@ -5,7 +5,7 @@
 namespace ef_sjov.Migrations
 {
     /// <inheritdoc />
-    public partial class Samlet : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

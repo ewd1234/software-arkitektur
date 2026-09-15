@@ -10,8 +10,8 @@ using Model;
 namespace ef_sjov.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20260914094121_Samlet")]
-    partial class Samlet
+    [Migration("20260915091750_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
