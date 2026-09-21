@@ -8,7 +8,9 @@
   <Folder Name="/modul5-entityFramework/">
     <Project Path="modul5-entityFramework/ef-sjov/ef-sjov.csproj" />
   </Folder>
-  <Folder Name="/modul6-EF-API/" />
+  <Folder Name="/modul6-EF-API/">
+    <Project Path="modul6-EF-API/todo-project/todo-project.csproj" />
+  </Folder>
   <Folder Name="/modul6-EF-API/book-api-ef/">
     <Project Path="modul6-EF-API/book-api-ef/TodoApi.csproj" />
   </Folder>

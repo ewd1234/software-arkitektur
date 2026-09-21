@@ -12,7 +12,7 @@ public class DataService
 
     public DataService(BoardContext db)
     {
-        this.db = db;
+        //this.db = db;
     }
     /// <summary>
     /// Seeder noget nyt data i databasen hvis det er nødvendigt.
