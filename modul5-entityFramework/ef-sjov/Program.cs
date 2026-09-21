@@ -31,6 +31,12 @@ using (var db = new TaskContext())
         if (createT == 1)
         {
             System.Console.WriteLine("Hvilken bruger? (id)");
+            var allUsers = db.Users.ToList();
+                System.Console.WriteLine("\n--- BRUGERE ---");
+                foreach (var user in allUsers)
+                {
+                    System.Console.WriteLine($"Id: {user.UserId} | Navn: {user.Name}");
+                }
             if(int.TryParse(Console.ReadLine(), out int taskUser))
             {
                 User? chosenUser = db.Users
@@ -84,12 +90,6 @@ using (var db = new TaskContext())
 
         }
 
-    
-   /* Console.WriteLine("Find den sidste task");
-    var lastTask = db.Tasks
-        .OrderBy(b => b.TodoTaskId)
-        .Last();
-    Console.WriteLine($"Text: {lastTask.Text} \n Id: {lastTask.TodoTaskId} \n Done: {lastTask.Done} ");*/
 
     //Update
     System.Console.WriteLine("================================================");
@@ -130,6 +130,13 @@ using (var db = new TaskContext())
         switch (deleteTask)
         {
             case 1:
+                var allUsers = db.Users.ToList();
+                System.Console.WriteLine("\n--- BRUGERE ---");
+                foreach (var user in allUsers)
+                {
+                    System.Console.WriteLine($"Id: {user.UserId} | Navn: {user.Name}");
+                }
+
                 System.Console.WriteLine("Hvilken user skal fjernes (id)?:");
                 if (int.TryParse(Console.ReadLine(), out int removeUserId))
                 {

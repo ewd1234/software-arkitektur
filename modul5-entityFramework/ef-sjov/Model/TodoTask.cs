@@ -19,6 +19,6 @@ namespace Model
         public string Category {get;set;}
         public bool Done { get; set; }
 
-        public User User {get;set;}
+        public User? User {get;set;}
     }
 }
