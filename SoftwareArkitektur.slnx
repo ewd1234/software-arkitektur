@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/modul1-rekursion/">
+    <Project Path="modul1-rekursion/consoleProject/consoleProject.csproj" />
+  </Folder>
+  <Folder Name="/modul3-web-api-design/">
+    <Project Path="modul3-web-api-design/min-foerste-api/min-foerste-api.csproj" />
+  </Folder>
+  <Folder Name="/modul5-entityFramework/">
+    <Project Path="modul5-entityFramework/ef-sjov/ef-sjov.csproj" />
+  </Folder>
+  <Folder Name="/modul6-EF-API/" />
+  <Folder Name="/modul6-EF-API/book-api-ef/">
+    <Project Path="modul6-EF-API/book-api-ef/TodoApi.csproj" />
+  </Folder>
+  <Project Path="modul2-functional-programming/modul2-functional-programming.csproj" />
+</Solution>
