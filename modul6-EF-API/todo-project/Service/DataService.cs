@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
 using System.Text.Json;
 
-=======
->>>>>>> 03f3c04 (Lavet stort set hele opgave 2)
 using Data;
 using Model;
 
@@ -11,19 +8,11 @@ namespace Service;
 
 public class DataService
 {
-<<<<<<< HEAD
-    private BoardContext boardContext { get; set; }
-
-    public DataService(BoardContext db)
-    {
-        //this.db = db;
-=======
     private BoardContext db { get; }
 
     public DataService(BoardContext db)
     {
         this.db = db;
->>>>>>> 03f3c04 (Lavet stort set hele opgave 2)
     }
     /// <summary>
     /// Seeder noget nyt data i databasen hvis det er nødvendigt.
@@ -31,8 +20,6 @@ public class DataService
     
     public void SeedData()
     {
-<<<<<<< HEAD
-=======
         if (db.Boards.Any())
         {
             return;
@@ -70,7 +57,6 @@ public class DataService
     }
 
     public void CreateUser(User user){
->>>>>>> 03f3c04 (Lavet stort set hele opgave 2)
         
     }
 }

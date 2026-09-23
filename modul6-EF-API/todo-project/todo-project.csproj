@@ -15,13 +15,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.8" />
-<<<<<<< HEAD
-    <PackageReference Include="Microsoft.OpenApi" Version="2.3.0" />
-    <PackageReference Include="NuGet.Packaging" Version="6.12.1" />
-    <PackageReference Include="NuGet.Protocol" Version="6.12.1" />
-    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.11" />
-=======
->>>>>>> 03f3c04 (Lavet stort set hele opgave 2)
   </ItemGroup>
 
 </Project>
